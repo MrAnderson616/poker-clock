@@ -25,15 +25,24 @@ Buying an Apple Developer certificate ($99/yr) and a Windows code-signing
 certificate (a few hundred a year) isn't worth it for test builds, so both
 operating systems will warn you once. This is expected.
 
-**macOS** — double-clicking will say the app "cannot be opened because it is
-from an unidentified developer." Instead:
+**macOS** — double-clicking shows a warning that the app "cannot be opened
+because Apple cannot check it for malicious software." What to do next depends
+on your macOS version, because Apple removed the old Control-click shortcut in
+macOS 15.
 
-1. Open Applications in Finder.
-2. **Right-click** (or Control-click) *Tournament Clock* → **Open**.
-3. Click **Open** in the dialog.
+*macOS 15 Sequoia, macOS 26 Tahoe, and later:*
 
-You only need to do this the first time. If macOS instead claims the app is
-*damaged*, the quarantine flag is stuck — clear it with:
+1. Double-click the app once and dismiss the warning.
+2. Open **System Settings → Privacy & Security**.
+3. Scroll to the bottom. There is a message naming *Tournament Clock* — click
+   **Open Anyway** next to it.
+4. Launch the app again and confirm.
+
+*macOS 14 Sonoma and earlier:* right-click (or Control-click) the app in
+Applications → **Open** → **Open**.
+
+Either way you only do this once. If you would rather skip the clicking, this
+one command clears the flag that triggers the whole thing:
 
 ```sh
 xattr -dr com.apple.quarantine "/Applications/Tournament Clock.app"
